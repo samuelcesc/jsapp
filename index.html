@@ -7,28 +7,40 @@
     <body>
         <form name="inputForm" onsubmit="return validateForm()" action="post.php" method="POST" >
             <div class="">
-                <input type="text" name="input1" />
+                <input type="text" name="input1" placeholder="Input 1" />
             </div>
             <div class="">
-                <input type="text" name="input2" />
+                <input type="text" name="input2" placeholder="Input 2" />
             </div>
 
             <input type="submit" name="submit" value="Submit" />
+        </form>
     </body>
 
     <script type="text/javascript">
         function validateForm(){
-            var input1 = document.forms["inputForm"]["input1"].value;
-            var input2 = document.forms["inputForm"]["input2"].value;
+            var inputa = document.forms["inputForm"]["input1"].value;
+            var inputb = document.forms["inputForm"]["input2"].value;
+
+            var input1 = +inputa;
+            var input2 = +inputb;
+            
+            if((isNaN(input1)) || (isNaN(input2))){
+                alert("Please enter integers only!");
+                return false;
+            }
 
             if(input1 < 1 || input2 < 1) {
                 alert("Please put a value greater than 1");
+                return false;
             }
             else if (input1 > 20 || input2 > 20){
                 alert("Please put in a value less than 20");
+                return false;
             }
             else if (input2 < input1){
                 alert("The second input should be greater than the first!")
+                return false;
             }
         }   
     </script>
